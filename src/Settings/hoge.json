@@ -1,0 +1,14 @@
+{
+    "MySetting": "Hello,World!",
+    "ConnectionStrings": {
+        "DefaultConnection": "Server=localhost;Database=myDb;User Id=sa;Password=yourPassword;"
+    },
+    "AppSettings": {
+        "AppName": "MyApp",
+        "IsEnabled": true
+    },
+    "Smtp": {
+        "Server": "smtp.example.com",
+        "Port": 25
+    }
+}
