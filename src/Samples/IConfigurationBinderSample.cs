@@ -1,22 +1,21 @@
-﻿using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace JsonParsingSample.Samples;
 
 /// <summary>
-/// Newtonsoft.Json のDeserializeを使用する方法
+/// Microsoft.Extensions.Configuration.Binder パッケージを使用する方法
 /// </summary>
-/// <remarks>
-/// 方法6
-/// </remarks>
-class NewtonsoftJsonDeserializeSample
+public class IConfigurationBinderSample
 {
     public static void Run()
     {
-        string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "src/Settings/hoge.json");
-        string jsonContent = File.ReadAllText(jsonFilePath);
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("src/Settings/hoge.json", optional: false, reloadOnChange: true)
+            .Build();
 
-        var appConfig = JsonConvert.DeserializeObject<AppConfig>(jsonContent);
-
+        // Microsoft.Extensions.Configuration.Binder パッケージを使用することで記述可能
+        var appConfig = configuration.Get<AppConfig>();
         Console.WriteLine($"MySetting: {appConfig.MySetting}");
         Console.WriteLine($"接続文字列: {appConfig.ConnectionStrings.DefaultConnection}");
         Console.WriteLine($"アプリ名: {appConfig.AppSettings.AppName}");

@@ -4,6 +4,10 @@ Console.WriteLine("方法1: IConfiguration を使用");
 IConfigurationSample.Run();
 
 Console.WriteLine("\n-------------------------------\n");
+Console.WriteLine("方法1-1: IConfiguration Binderを使用");
+IConfigurationBinderSample.Run();
+
+Console.WriteLine("\n-------------------------------\n");
 Console.WriteLine("方法2: System.Text.Json JsonDocument を使用");
 SystemTextJsonJsonDocumentSample.Run();
 

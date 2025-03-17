@@ -12,9 +12,10 @@ class SystemTextJsonJsonDocumentSample
 {
     public static void Run()
     {
-        string json = File.ReadAllText("Settings/hoge.json");
+        string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "src/Settings/hoge.json");
+        string jsonContent = File.ReadAllText(jsonFilePath);
 
-        using (JsonDocument document = JsonDocument.Parse(json))
+        using (JsonDocument document = JsonDocument.Parse(jsonContent))
         {
             JsonElement root = document.RootElement;
 

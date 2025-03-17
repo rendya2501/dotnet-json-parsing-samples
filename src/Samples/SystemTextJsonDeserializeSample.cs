@@ -12,7 +12,9 @@ class SystemTextJsonDeserializeSample
 {
     public static void Run()
     {
-        string jsonContent = File.ReadAllText("Settings/hoge.json");
+        string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "src/Settings/hoge.json");
+        string jsonContent = File.ReadAllText(jsonFilePath);
+
         var appConfig = JsonSerializer.Deserialize<AppConfig>(jsonContent);
 
         Console.WriteLine($"MySetting: {appConfig.MySetting}");
@@ -21,31 +23,5 @@ class SystemTextJsonDeserializeSample
         Console.WriteLine($"有効かどうか: {appConfig.AppSettings.IsEnabled}");
         Console.WriteLine($"SMTPサーバー: {appConfig.Smtp.Server}");
         Console.WriteLine($"SMTPポート: {appConfig.Smtp.Port}");
-    }
-
-
-    public class AppConfig
-    {
-        public string MySetting { get; set; }
-        public ConnectionStringsConfig ConnectionStrings { get; set; }
-        public AppSettingsConfig AppSettings { get; set; }
-        public SmtpConfig Smtp { get; set; }
-    }
-
-    public class ConnectionStringsConfig
-    {
-        public string DefaultConnection { get; set; }
-    }
-
-    public class AppSettingsConfig
-    {
-        public string AppName { get; set; }
-        public bool IsEnabled { get; set; }
-    }
-
-    public class SmtpConfig
-    {
-        public string Server { get; set; }
-        public int Port { get; set; }
     }
 }

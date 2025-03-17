@@ -12,7 +12,9 @@ class NewtonsoftJsonJObjectSample
 {
     public static void Run()
     {
-        string jsonContent = File.ReadAllText("Settings/hoge.json");
+        string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "src/Settings/hoge.json");
+        string jsonContent = File.ReadAllText(jsonFilePath);
+
         JObject jsonObject = JObject.Parse(jsonContent);
 
         string mySetting = jsonObject["MySetting"].Value<string>();

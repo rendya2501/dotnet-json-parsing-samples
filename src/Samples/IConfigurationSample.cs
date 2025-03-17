@@ -12,10 +12,12 @@ class IConfigurationSample
 {
     public static void Run()
     {
+        // Microsoft.Extensions.Configuration.Json パッケージを使用する方法
         var configuration = new ConfigurationBuilder()
-            .AddJsonFile("Settings/hoge.json", optional: false, reloadOnChange: true)
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("src/Settings/hoge.json", optional: false, reloadOnChange: true)
             .Build();
-
+            
         string connectionString = configuration.GetConnectionString("DefaultConnection");
         string appName1 = configuration["AppSettings:AppName"];
         string appName2 = configuration.GetSection("AppSettings")["AppName"];

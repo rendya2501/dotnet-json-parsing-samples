@@ -13,8 +13,10 @@ class SystemTextJsonNodesJsonNodeSample
 {
     public static void Run()
     {
-        string json = File.ReadAllText("Settings/hoge.json");
-        var node = JsonNode.Parse(json);
+        string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "src/Settings/hoge.json");
+        string jsonContent = File.ReadAllText(jsonFilePath);
+
+        var node = JsonNode.Parse(jsonContent);
         Console.WriteLine($"Name: root");
         Console.WriteLine($"Path: {node.GetPath()}");
         Console.WriteLine($"Type: {node.GetType().Name}");
