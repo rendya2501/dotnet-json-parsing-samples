@@ -2,7 +2,7 @@
 
 .NETでのJSON読み取りライブラリの使い方サンプル
 
-```
+``` txt
 方法1: IConfiguration を使用
 接続文字列: Server=localhost;Database=myDb;User Id=sa;Password=yourPassword;
 アプリ名1: MyApp
